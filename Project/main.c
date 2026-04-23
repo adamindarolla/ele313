@@ -201,23 +201,26 @@ int main(void){
                         
             if (maxVal > maxValThreshold){
                 switch (strongestSensor) {
-                case 0
-                case 1
-                case 2
+                case 0:
+                case 1:
+                case 2:
                     followSide = 1; //right
                     currentState = FOUNDWALL;
+                    break;
                     
-                case 3  
-                case 4
+                case 3:
+                case 4:
                     followside = 0; // ignore these two
                     currentState = EXPLORING;
                     left_motor_set_speed(500);
                     right_motor_set_speed(500);
-                case 5
-                case 6
-                case 7
+                    break;
+                case 5:
+                case 6:
+                case 7:
                     followSide = -1; //left
                     currentState = FOUNDWALL;
+                    break;
                 }
 
             else{
@@ -234,6 +237,6 @@ int main(void){
 
 
 
-        // the purple } is for the while(1) loop leave that!
+    
     }
 }
