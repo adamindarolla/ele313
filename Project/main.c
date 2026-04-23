@@ -25,13 +25,13 @@ CONDVAR_DECL(bus_condvar);
 
 // Space to declare wall following function
 void follow_wall(){
-    float wheelRatio = 1.0;
-    int pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
-    int oSide = get_calibrated_prox(offSide); 
-    int pCorner = get_calibrated_prox(prefCorner);
-    int oCorner = get_calibrated_prox(offCorner);
-    int pFront = get_calibrated_prox(prefFront);
-    int oFront = get_calibrated_prox(offFront);
+    
+    pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+    oSide = get_calibrated_prox(offSide); 
+    pCorner = get_calibrated_prox(prefCorner);
+    oCorner = get_calibrated_prox(offCorner);
+    pFront = get_calibrated_prox(prefFront);
+    oFront = get_calibrated_prox(offFront);
     if (pSide<minirread){
 				//turn towards wall
 				wheelRatio = 0.9;
@@ -100,6 +100,7 @@ int main(void){
 	//Bluetooth
 	serial_start();
 
+    // main
     int SensorValue[8];
     int currentVal = 0;
     int strongestSensor =-1; // put it as -1 to avoid confusing code - will be from 0 to 7 later
@@ -108,6 +109,7 @@ int main(void){
 
     int followSide =0; // will be -1 or +1 later
     
+    // wall follow
     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
     int offSide;
     int prefCorner;
@@ -115,10 +117,19 @@ int main(void){
     int prefFront;
     int offFront;
 
-
     int maxirread = 1000;
     int minirread = 300;
 
+    float wheelRatio = 1;
+
+    int pSide;
+    int oSide;
+    int pCorner;
+    int oCorner;
+    int pFront;
+    int oFront;
+
+    //main
     bool wallsexplored = 0; // flicks to 1 (true) after doing a lap around the walls
     int followCounter =0; //counts steps taken during wall following
     int followDuration = 1200; // steps before wall follow mode ends
@@ -186,16 +197,18 @@ int main(void){
 			offCorner = 1;
 			offSide = 2;
 			offBack = 3;
+             }
+        }
 
 
             else{
-                left_motor_set_speed(500);
-                right_motor_set_speed(500);
+                left_motor_set_speed(1000);
+                right_motor_set_speed(1000);
             }
         }
 
         if (currentState == FOUNDWALL){
-            if (wallsexplored == 0){
+            while (wallsexplored == 0){
                 //DO THE WALL FOLLOWING CODE
                 follow_wall(); // is this going to work haha
                 followCounter++; // increases followCounter
@@ -206,7 +219,7 @@ int main(void){
             }
             else{
 
-                left_motor_set_speed(500*followSide);
+                left_motor_set_speed(-500*followSide);
                 right_motor_set_speed(500*followSide);
                 delay_ms(500); // rotate for a certain amount of time
                 left_motor_set_speed(0);
@@ -215,7 +228,7 @@ int main(void){
 
                 // This is if we do not want to re-enter wall follow mode i.e. bounce right off the wall
             }
-        }
+        } // foundwall end
         
             
         
@@ -236,8 +249,8 @@ int main(void){
                 case 4:
                     followside = 0; // ignore these two
                     currentState = EXPLORING;
-                    left_motor_set_speed(500);
-                    right_motor_set_speed(500);
+                    left_motor_set_speed(1000);
+                    right_motor_set_speed(1000);
                     break;
                 case 5:
                 case 6:
@@ -247,23 +260,21 @@ int main(void){
                     break;
                 }
 
-            else{
-                left_motor_set_speed(500);
-                right_motor_set_speed(500);
+            }else{
+                left_motor_set_speed(1000);
+                right_motor_set_speed(1000);
 
                 }
-            }
-            
-        }   
-        
+            } // exploring end
 
-        delay_ms(50);
+            delay_ms(50);
+ }   //closing bracket for while loop     
+}   // int min void end
 
+#define STACK_CHK_GUARD 0xe2dee396
+uintptr_t __stack_chk_guard = STACK_CHK_GUARD;
 
-
-    
-            }
-            //closing bracket for while loop
-        }
-    }
+void __stack_chk_fail(void)
+{
+    chSysHalt("Stack smashing detected");
 }
