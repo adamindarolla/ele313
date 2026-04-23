@@ -20,12 +20,83 @@ messagebus_t bus;
 MUTEX_DECL(bus_lock);
 CONDVAR_DECL(bus_condvar);
 
+// Globally declare variables
+
+    int SensorValue[8];
+    int currentVal = 0;
+    int strongestSensor =-1; // put it as -1 to avoid confusing code - will be from 0 to 7 later
+    int maxVal = 0;
+    int maxValThreshold = 500; // for collision detection
+
+    int followSide =0; // will be -1 or +1 later
+    
+
+    int maxirread = 1000;
+    int minirread = 300;
+
+    bool wallsexplored = 0; // flicks to 1 (true) after doing a lap around the walls
+    int followCounter =0; //counts steps taken during wall following
+    int followDuration = 1200 // steps before wall follow mode ends
+
+    enum RobotState { NOWALL, FOUNDWALL, EXPLORING };
+	enum RobotState currentState = NOWALL;
+
 // Space to declare wall following function
+void follow_wall();
+    float wheelRatio = 1.0;
+    int pSide = get_prox(prefSide); // this should be fine
+    int oSide = get_prox(offSide); 
+    int pCorner = get_prox(prefCorner);
+    int oCorner = get_prox(offCorner);
+    int pFront = get_prox(prefFront);
+    int oFront = get_prox(offFront);
+    if (pSide<minirread){
+				//turn towards wall
+				wheelratio = 0.9;
+			} else if (pSide>maxirread && oSide<maxirread) || (pCorner>maxirread && oCorner<maxirread)){
+				//turn away from preffered wall
+				wheelratio = 1.1;
+			} else if (oSide>maxirread && pSide<maxirread) || (oCorner>maxirread && pCorner<maxirread){
+				// turn away from offside wall
+				wheelratio = 0.9;
+			} else if ((pSide>maxirread && oSide>maxirread) || (pCorner>maxirread && oCorner>maxirread)){
+				// if robot is too close to both walls, turn around 180 ish degrees
+				left_motor_set_speed(-500 * followSide);
+				right_motor_set_speed(500 * followSide); 
+				chThdSleepMilliseconds(1000); // 1 second is abritary amount of time
+			} else if (pFront>maxirread || (oFront>maxirread)){
+                // if wall is infront of robot, turn away from desired side
+				left_motor_set_speed(-500 * followSide);
+				right_motor_set_speed(500 * followSide); 
+				chThdSleepMilliseconds(500); // 1 second is abritary amount of time
+            }
+
+			// sets wheel speeds based case seen before
+			if (followsSide ==-1){
+				if (wheelRatio<1){
+					left_motor_set_speed(1000 * wheelRatio);
+					right_motor_set_speed(1000); 
+				}else{
+					left_motor_set_speed(1000);
+					right_motor_set_speed(1000 / wheelRatio); 
+				}	
+			} else if (followside ==1){
+				if (wheelRatio<1){
+					left_motor_set_speed(1000);
+					right_motor_set_speed(1000 * wheelRatio); 
+				} else {
+					left_motor_set_speed(1000 / wheelRatio);
+					right_motor_set_speed(1000); 
+				}
+			}
+		
+
 
 // Space for some other stuff
 
 // Initialising stuff
-int main(void){
+
+int main(void){ 
     halInit();
     chSysInit();
     mpu_init();
@@ -46,23 +117,8 @@ int main(void){
 	//Bluetooth
 	serial_start();
 
-    // Declare our stuff
-    int SensorValue[8];
-    int currentVal = 0;
-    int strongestSensor =-1; // put it as -1 to avoid confusing code - will be from 0 to 7 later
-    int maxVal = 0;
-    int maxValThreshold = 500; // for collision detection
-
-    int followSide =0; // will be -1 or +1 later
     
-
-    int maxirread = 1000;
-    int minirread = 300;
-
-    bool wallsexplored = 0; // flicks to 1 (true) after doing a lap around the walls
-
-    enum RobotState { NOWALL, FOUNDWALL, EXPLORING };
-	enum RobotState currentState = NOWALL;
+    // Wall follower function here
 
 
 
@@ -113,13 +169,12 @@ int main(void){
         if (currentState == FOUNDWALL){
             if (wallsexplored = 0){
                 //DO THE WALL FOLLOWING CODE
+                follow_wall(); // is this going to work haha
+                followCounter = followCounter + int 1; // increases followCounter
 
-
-
-
-
-
+                if(followCounter >= followDuration){
                 wallsexplored = 1; // ensures we do not re-enter this state - needs a thing that only does it after a certain amount of time
+                }
             }
             else{
 
@@ -171,7 +226,7 @@ int main(void){
         }   
         
 
-
+        delay_ms(50);
 
 
 
