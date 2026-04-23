@@ -1,4 +1,5 @@
 // Adam was actually here 22/4/26
+// So was Tom. Shout out Tom Seipp
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -36,13 +37,13 @@ CONDVAR_DECL(bus_condvar);
 
     bool wallsexplored = 0; // flicks to 1 (true) after doing a lap around the walls
     int followCounter =0; //counts steps taken during wall following
-    int followDuration = 1200 // steps before wall follow mode ends
+    int followDuration = 1200; // steps before wall follow mode ends
 
     enum RobotState { NOWALL, FOUNDWALL, EXPLORING };
 	enum RobotState currentState = NOWALL;
 
 // Space to declare wall following function
-void follow_wall();
+void follow_wall(){
     float wheelRatio = 1.0;
     int pSide = get_prox(prefSide); // this should be fine
     int oSide = get_prox(offSide); 
@@ -89,6 +90,7 @@ void follow_wall();
 					right_motor_set_speed(1000); 
 				}
 			}
+        }
 		
 
 
@@ -127,11 +129,11 @@ int main(void){
         //Need some logic that checks immediate surroundings
         //AND takes into account previous exploration
         //To decide what currentMode is
-
+            int maxVal = 0;
             // Check all sensors and get values
-            for (int i = 0, i < 8 , i++){
+            for (int i = 0; i < 8 ; i++){
 
-                int SensorValue(i) = get_prox(i); // Start at 0 and end at 7 for corresponding sensors
+                int SensorValue[i] = get_prox(i); // Start at 0 and end at 7 for corresponding sensors
                 int currentVal = get_prox(i);
 
                 if (currentVal > maxVal){
@@ -147,18 +149,20 @@ int main(void){
         if(currentState == NOWALL){
              if(maxVal >= maxValThreshold){ 
             switch (strongestSensor) {
-                case 0
-                case 1
-                case 2
-                case 3  
+                case 0:
+                case 1:
+                case 2:
+                case 3:
                     followSide = 1; //right
                     currentState = FOUNDWALL;
-                case 4
-                case 5
-                case 6
-                case 7
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                case 7:
                     followSide = -1; //left
                     currentState = FOUNDWALL;
+                    break;
             }
             else{
                 left_motor_set_speed(500);
@@ -167,7 +171,7 @@ int main(void){
         }
 
         if (currentState == FOUNDWALL){
-            if (wallsexplored = 0){
+            if (wallsexplored == 0){
                 //DO THE WALL FOLLOWING CODE
                 follow_wall(); // is this going to work haha
                 followCounter = followCounter + int 1; // increases followCounter
