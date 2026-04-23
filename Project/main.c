@@ -21,45 +21,26 @@ messagebus_t bus;
 MUTEX_DECL(bus_lock);
 CONDVAR_DECL(bus_condvar);
 
-// Globally declare variables
 
-    int SensorValue[8];
-    int currentVal = 0;
-    int strongestSensor =-1; // put it as -1 to avoid confusing code - will be from 0 to 7 later
-    int maxVal = 0;
-    int maxValThreshold = 500; // for collision detection
-
-    int followSide =0; // will be -1 or +1 later
-    
-
-    int maxirread = 1000;
-    int minirread = 300;
-
-    bool wallsexplored = 0; // flicks to 1 (true) after doing a lap around the walls
-    int followCounter =0; //counts steps taken during wall following
-    int followDuration = 1200; // steps before wall follow mode ends
-
-    enum RobotState { NOWALL, FOUNDWALL, EXPLORING };
-	enum RobotState currentState = NOWALL;
 
 // Space to declare wall following function
 void follow_wall(){
     float wheelRatio = 1.0;
-    int pSide = get_prox(prefSide); // this should be fine
-    int oSide = get_prox(offSide); 
-    int pCorner = get_prox(prefCorner);
-    int oCorner = get_prox(offCorner);
-    int pFront = get_prox(prefFront);
-    int oFront = get_prox(offFront);
+    int pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+    int oSide = get_calibrated_prox(offSide); 
+    int pCorner = get_calibrated_prox(prefCorner);
+    int oCorner = get_calibrated_prox(offCorner);
+    int pFront = get_calibrated_prox(prefFront);
+    int oFront = get_calibrated_prox(offFront);
     if (pSide<minirread){
 				//turn towards wall
-				wheelratio = 0.9;
-			} else if (pSide>maxirread && oSide<maxirread) || (pCorner>maxirread && oCorner<maxirread)){
+				wheelRatio = 0.9;
+			} else if ((pSide>maxirread && oSide<maxirread) || (pCorner>maxirread && oCorner<maxirread)){
 				//turn away from preffered wall
-				wheelratio = 1.1;
-			} else if (oSide>maxirread && pSide<maxirread) || (oCorner>maxirread && pCorner<maxirread){
+				wheelRatio = 1.1;
+			} else if ((oSide>maxirread && pSide<maxirread) || (oCorner>maxirread && pCorner<maxirread)){
 				// turn away from offside wall
-				wheelratio = 0.9;
+				wheelRatio = 0.9;
 			} else if ((pSide>maxirread && oSide>maxirread) || (pCorner>maxirread && oCorner>maxirread)){
 				// if robot is too close to both walls, turn around 180 ish degrees
 				left_motor_set_speed(-500 * followSide);
@@ -73,7 +54,7 @@ void follow_wall(){
             }
 
 			// sets wheel speeds based case seen before
-			if (followsSide ==-1){
+			if (followSide ==-1){
 				if (wheelRatio<1){
 					left_motor_set_speed(1000 * wheelRatio);
 					right_motor_set_speed(1000); 
@@ -119,22 +100,43 @@ int main(void){
 	//Bluetooth
 	serial_start();
 
+    int SensorValue[8];
+    int currentVal = 0;
+    int strongestSensor =-1; // put it as -1 to avoid confusing code - will be from 0 to 7 later
+    int maxVal = 0;
+    int maxValThreshold = 500; // for collision detection
+
+    int followSide =0; // will be -1 or +1 later
     
-    // Wall follower function here
+    int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+    int offSide;
+    int prefCorner;
+    int offCorner;
+    int prefFront;
+    int offFront;
 
 
+    int maxirread = 1000;
+    int minirread = 300;
+
+    bool wallsexplored = 0; // flicks to 1 (true) after doing a lap around the walls
+    int followCounter =0; //counts steps taken during wall following
+    int followDuration = 1200; // steps before wall follow mode ends
+
+    enum RobotState { NOWALL, FOUNDWALL, EXPLORING };
+	enum RobotState currentState = NOWALL;
 
     // Main Loop!
     while(1){
         //Need some logic that checks immediate surroundings
         //AND takes into account previous exploration
         //To decide what currentMode is
-            int maxVal = 0;
+            maxVal = 0;
             // Check all sensors and get values
             for (int i = 0; i < 8 ; i++){
 
-                int SensorValue[i] = get_prox(i); // Start at 0 and end at 7 for corresponding sensors
-                int currentVal = get_prox(i);
+                SensorValue[i] = get_prox(i); // Start at 0 and end at 7 for corresponding sensors
+                currentVal = get_prox(i);
 
                 if (currentVal > maxVal){
                     maxVal = currentVal;
@@ -142,7 +144,7 @@ int main(void){
                 }
             }
                         
-        }
+        
 
         //Different behaviour based on which state we decided
 
@@ -164,6 +166,28 @@ int main(void){
                     currentState = FOUNDWALL;
                     break;
             }
+
+            				// sets which sensors are preffered side and offside
+		if (followSide == 1){
+			prefFront = 0;
+			prefCorner = 1;
+			prefSide = 2;
+			prefBack = 3;
+			offFront = 7;
+			offCorner = 6;
+			offSide = 5;
+			offBack = 4;
+		} else {
+			prefFront = 7;
+			prefCorner = 6;
+			prefSide = 5;
+			prefBack = 4;
+			offFront = 0;
+			offCorner = 1;
+			offSide = 2;
+			offBack = 3;
+
+
             else{
                 left_motor_set_speed(500);
                 right_motor_set_speed(500);
@@ -174,7 +198,7 @@ int main(void){
             if (wallsexplored == 0){
                 //DO THE WALL FOLLOWING CODE
                 follow_wall(); // is this going to work haha
-                followCounter = followCounter + int 1; // increases followCounter
+                followCounter++; // increases followCounter
 
                 if(followCounter >= followDuration){
                 wallsexplored = 1; // ensures we do not re-enter this state - needs a thing that only does it after a certain amount of time
@@ -186,7 +210,7 @@ int main(void){
                 right_motor_set_speed(500*followSide);
                 delay_ms(500); // rotate for a certain amount of time
                 left_motor_set_speed(0);
-                right_motor_set_speed(0)
+                right_motor_set_speed(0);
                 currentState = EXPLORING; 
 
                 // This is if we do not want to re-enter wall follow mode i.e. bounce right off the wall
@@ -238,5 +262,8 @@ int main(void){
 
 
     
+            }
+            //closing bracket for while loop
+        }
     }
 }
