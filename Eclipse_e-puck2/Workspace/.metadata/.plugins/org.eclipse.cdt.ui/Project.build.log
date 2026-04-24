@@ -1,6 +1,81 @@
-17:34:10 **** Incremental Build of configuration Default for project Project ****
+14:15:42 **** Incremental Build of configuration Default for project Project ****
 make all 
-make: Nothing to be done for 'all'.
+[1;34mCompiling main.c[0m
+main.c: In function 'main':
+main.c:144:29: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                             followside = 0; // ignore these two
+                             ^~~~~~~~~~
+                             followSide
+main.c:144:29: note: each undeclared identifier is reported only once for each function it appears in
+main.c:176:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(1000); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:88:9: warning: unused variable 'followDuration' [-Wunused-variable]
+     int followDuration = 1200; // steps before wall follow mode ends
+         ^~~~~~~~~~~~~~
+main.c:87:9: warning: unused variable 'followCounter' [-Wunused-variable]
+     int followCounter =0; //counts steps taken during wall following
+         ^~~~~~~~~~~~~
+main.c:86:10: warning: unused variable 'wallsexplored' [-Wunused-variable]
+     bool wallsexplored = 1; // flicks to 1 (true) after doing a lap around the walls
+          ^~~~~~~~~~~~~
+main.c:83:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:82:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:81:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:80:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:79:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:78:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:76:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:74:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:73:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:71:9: warning: unused variable 'offFront' [-Wunused-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:70:9: warning: unused variable 'prefFront' [-Wunused-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:69:9: warning: unused variable 'offCorner' [-Wunused-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:68:9: warning: unused variable 'prefCorner' [-Wunused-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:67:9: warning: unused variable 'offSide' [-Wunused-variable]
+     int offSide;
+         ^~~~~~~
+main.c:66:9: warning: unused variable 'prefSide' [-Wunused-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:57:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:48:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:192:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
 
-17:34:11 Build Finished. 0 errors, 0 warnings. (took 694ms)
+14:15:43 Build Failed. 3 errors, 21 warnings. (took 581ms)
 

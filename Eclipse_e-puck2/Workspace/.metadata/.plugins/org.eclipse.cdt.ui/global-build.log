@@ -342,3 +342,1791 @@ make: Nothing to be done for 'all'.
 17:34:10 **** Incremental Build of configuration Default for project Project ****
 make all 
 make: Nothing to be done for 'all'.
+13:21:33 **** Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling crt0_v7m.s[0m
+[1;34mCompiling chcoreasm_v7m.s[0m
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.9;
+     ^~~~~~~~~~
+main.c:38:22: error: 'maxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>maxirread && oSide<maxirread) || (pCorner>maxirread && oCorner<maxirread)){
+                      ^~~~~~~~~
+                      minirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:186:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:190:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:224:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(500); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:250:21: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                     followside = 0; // ignore these two
+                     ^~~~~~~~~~
+                     followSide
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 300;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 1000;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:272:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+13:31:46 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.9;
+     ^~~~~~~~~~
+main.c:38:22: error: 'maxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>maxirread && oSide<maxirread) || (pCorner>maxirread && oCorner<maxirread)){
+                      ^~~~~~~~~
+                      minirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:188:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:192:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:227:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(500); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:255:21: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                     followside = 0; // ignore these two
+                     ^~~~~~~~~~
+                     followSide
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 300;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 1000;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:277:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+13:33:18 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.9;
+     ^~~~~~~~~~
+main.c:38:22: error: 'maxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>maxirread && oSide<maxirread) || (pCorner>maxirread && oCorner<maxirread)){
+                      ^~~~~~~~~
+                      minirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:188:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:192:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:227:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(500); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:255:21: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                     followside = 0; // ignore these two
+                     ^~~~~~~~~~
+                     followSide
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:277:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+13:34:16 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.9;
+     ^~~~~~~~~~
+main.c:38:22: error: 'maxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>maxirread && oSide<maxirread) || (pCorner>maxirread && oCorner<maxirread)){
+                      ^~~~~~~~~
+                      minirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:188:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:192:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:227:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(500); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:255:21: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                     followside = 0; // ignore these two
+                     ^~~~~~~~~~
+                     followSide
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:277:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+13:41:03 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.75;
+     ^~~~~~~~~~
+main.c:38:22: error: 'maxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>maxirread && oSide<maxirread) || (pCorner>maxirread && oCorner<maxirread)){
+                      ^~~~~~~~~
+                      minirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:188:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:192:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:229:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(500); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:257:21: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                     followside = 0; // ignore these two
+                     ^~~~~~~~~~
+                     followSide
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:279:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+13:45:13 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.75;
+     ^~~~~~~~~~
+main.c:38:22: error: 'maxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>maxirread && oSide<maxirread) || (pCorner>maxirread && oCorner<maxirread)){
+                      ^~~~~~~~~
+                      minirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:188:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:192:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:231:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(500); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:259:21: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                     followside = 0; // ignore these two
+                     ^~~~~~~~~~
+                     followSide
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:281:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+13:49:35 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.75;
+     ^~~~~~~~~~
+main.c:38:22: error: 'naxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>naxirread) || (pCorner>maxirread )){
+                      ^~~~~~~~~
+                      minirread
+main.c:38:45: error: 'maxirread' undeclared (first use in this function); did you mean 'naxirread'?
+    } else if ((pSide>naxirread) || (pCorner>maxirread )){
+                                             ^~~~~~~~~
+                                             naxirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:188:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:192:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:231:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(500); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:259:21: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                     followside = 0; // ignore these two
+                     ^~~~~~~~~~
+                     followSide
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:281:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+13:54:04 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.75;
+     ^~~~~~~~~~
+main.c:38:22: error: 'naxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>naxirread) || (pCorner>maxirread )){
+                      ^~~~~~~~~
+                      minirread
+main.c:38:45: error: 'maxirread' undeclared (first use in this function); did you mean 'naxirread'?
+    } else if ((pSide>naxirread) || (pCorner>maxirread )){
+                                             ^~~~~~~~~
+                                             naxirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:188:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:192:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:231:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(500); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:259:21: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                     followside = 0; // ignore these two
+                     ^~~~~~~~~~
+                     followSide
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:282:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+13:56:23 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.75;
+     ^~~~~~~~~~
+main.c:38:22: error: 'naxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>naxirread) || (pCorner>maxirread )){
+                      ^~~~~~~~~
+                      minirread
+main.c:38:45: error: 'maxirread' undeclared (first use in this function); did you mean 'naxirread'?
+    } else if ((pSide>naxirread) || (pCorner>maxirread )){
+                                             ^~~~~~~~~
+                                             naxirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:188:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:192:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:231:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(1000); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:259:21: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                     followside = 0; // ignore these two
+                     ^~~~~~~~~~
+                     followSide
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:282:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+13:59:46 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.75;
+     ^~~~~~~~~~
+main.c:38:22: error: 'naxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>naxirread) || (pCorner>maxirread )){
+                      ^~~~~~~~~
+                      minirread
+main.c:38:45: error: 'maxirread' undeclared (first use in this function); did you mean 'naxirread'?
+    } else if ((pSide>naxirread) || (pCorner>maxirread )){
+                                             ^~~~~~~~~
+                                             naxirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:188:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:192:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:228:29: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                             followside = 0; // ignore these two
+                             ^~~~~~~~~~
+                             followSide
+main.c:270:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(1000); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:286:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+14:08:37 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c:27:6: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ void follow_wall(){
+      ^~~~~~~~~~~
+main.c: In function 'follow_wall':
+main.c:29:5: error: 'pSide' undeclared (first use in this function); did you mean 'pipe'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+     ^~~~~
+     pipe
+main.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+main.c:29:33: error: 'prefSide' undeclared (first use in this function); did you mean 'pSide'?
+     pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
+                                 ^~~~~~~~
+                                 pSide
+main.c:30:5: error: 'oSide' undeclared (first use in this function); did you mean 'pSide'?
+     oSide = get_calibrated_prox(offSide);
+     ^~~~~
+     pSide
+main.c:30:33: error: 'offSide' undeclared (first use in this function); did you mean 'oSide'?
+     oSide = get_calibrated_prox(offSide);
+                                 ^~~~~~~
+                                 oSide
+main.c:31:5: error: 'pCorner' undeclared (first use in this function)
+     pCorner = get_calibrated_prox(prefCorner);
+     ^~~~~~~
+main.c:31:35: error: 'prefCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     pCorner = get_calibrated_prox(prefCorner);
+                                   ^~~~~~~~~~
+                                   pCorner
+main.c:32:5: error: 'oCorner' undeclared (first use in this function); did you mean 'pCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+     ^~~~~~~
+     pCorner
+main.c:32:35: error: 'offCorner' undeclared (first use in this function); did you mean 'oCorner'?
+     oCorner = get_calibrated_prox(offCorner);
+                                   ^~~~~~~~~
+                                   oCorner
+main.c:33:5: error: 'pFront' undeclared (first use in this function); did you mean 'chroot'?
+     pFront = get_calibrated_prox(prefFront);
+     ^~~~~~
+     chroot
+main.c:33:34: error: 'prefFront' undeclared (first use in this function); did you mean 'pFront'?
+     pFront = get_calibrated_prox(prefFront);
+                                  ^~~~~~~~~
+                                  pFront
+main.c:34:5: error: 'oFront' undeclared (first use in this function); did you mean 'pFront'?
+     oFront = get_calibrated_prox(offFront);
+     ^~~~~~
+     pFront
+main.c:34:34: error: 'offFront' undeclared (first use in this function); did you mean 'oFront'?
+     oFront = get_calibrated_prox(offFront);
+                                  ^~~~~~~~
+                                  oFront
+main.c:35:15: error: 'minirread' undeclared (first use in this function)
+     if (pSide<minirread){
+               ^~~~~~~~~
+main.c:37:5: error: 'wheelRatio' undeclared (first use in this function)
+     wheelRatio = 0.75;
+     ^~~~~~~~~~
+main.c:38:22: error: 'naxirread' undeclared (first use in this function); did you mean 'minirread'?
+    } else if ((pSide>naxirread) || (pCorner>maxirread )){
+                      ^~~~~~~~~
+                      minirread
+main.c:38:45: error: 'maxirread' undeclared (first use in this function); did you mean 'naxirread'?
+    } else if ((pSide>naxirread) || (pCorner>maxirread )){
+                                             ^~~~~~~~~
+                                             naxirread
+main.c:46:33: error: 'followSide' undeclared (first use in this function); did you mean 'offSide'?
+     left_motor_set_speed(-500 * followSide);
+                                 ^~~~~~~~~~
+                                 offSide
+main.c:65:15: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+    } else if (followside ==1){
+               ^~~~~~~~~~
+               followSide
+main.c: In function 'main':
+main.c:188:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:192:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:229:29: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                             followside = 0; // ignore these two
+                             ^~~~~~~~~~
+                             followSide
+main.c:271:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(1000); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:130:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:129:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:128:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:127:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:126:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:125:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:123:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:121:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:120:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:118:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:117:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:116:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:115:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:114:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:113:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:104:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:95:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:287:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+14:11:49 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c: In function 'main':
+main.c:141:4: error: 'prefBack' undeclared (first use in this function); did you mean 'prefSide'?
+    prefBack = 3;
+    ^~~~~~~~
+    prefSide
+main.c:141:4: note: each undeclared identifier is reported only once for each function it appears in
+main.c:145:4: error: 'offBack' undeclared (first use in this function); did you mean 'prefBack'?
+    offBack = 4;
+    ^~~~~~~
+    prefBack
+main.c:182:29: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                             followside = 0; // ignore these two
+                             ^~~~~~~~~~
+                             followSide
+main.c:214:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(1000); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:88:9: warning: unused variable 'followDuration' [-Wunused-variable]
+     int followDuration = 1200; // steps before wall follow mode ends
+         ^~~~~~~~~~~~~~
+main.c:87:9: warning: unused variable 'followCounter' [-Wunused-variable]
+     int followCounter =0; //counts steps taken during wall following
+         ^~~~~~~~~~~~~
+main.c:86:10: warning: unused variable 'wallsexplored' [-Wunused-variable]
+     bool wallsexplored = 1; // flicks to 1 (true) after doing a lap around the walls
+          ^~~~~~~~~~~~~
+main.c:83:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:82:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:81:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:80:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:79:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:78:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:76:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:74:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:73:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:71:9: warning: variable 'offFront' set but not used [-Wunused-but-set-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:70:9: warning: variable 'prefFront' set but not used [-Wunused-but-set-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:69:9: warning: variable 'offCorner' set but not used [-Wunused-but-set-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:68:9: warning: variable 'prefCorner' set but not used [-Wunused-but-set-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:67:9: warning: variable 'offSide' set but not used [-Wunused-but-set-variable]
+     int offSide;
+         ^~~~~~~
+main.c:66:9: warning: variable 'prefSide' set but not used [-Wunused-but-set-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:57:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:48:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+14:15:42 **** Incremental Build of configuration Default for project Project ****
+make all 
+[1;34mCompiling main.c[0m
+main.c: In function 'main':
+main.c:144:29: error: 'followside' undeclared (first use in this function); did you mean 'followSide'?
+                             followside = 0; // ignore these two
+                             ^~~~~~~~~~
+                             followSide
+main.c:144:29: note: each undeclared identifier is reported only once for each function it appears in
+main.c:176:17: warning: implicit declaration of function 'delay_ms' [-Wimplicit-function-declaration]
+                 delay_ms(1000); // rotate for a certain amount of time
+                 ^~~~~~~~
+main.c:88:9: warning: unused variable 'followDuration' [-Wunused-variable]
+     int followDuration = 1200; // steps before wall follow mode ends
+         ^~~~~~~~~~~~~~
+main.c:87:9: warning: unused variable 'followCounter' [-Wunused-variable]
+     int followCounter =0; //counts steps taken during wall following
+         ^~~~~~~~~~~~~
+main.c:86:10: warning: unused variable 'wallsexplored' [-Wunused-variable]
+     bool wallsexplored = 1; // flicks to 1 (true) after doing a lap around the walls
+          ^~~~~~~~~~~~~
+main.c:83:9: warning: unused variable 'oFront' [-Wunused-variable]
+     int oFront;
+         ^~~~~~
+main.c:82:9: warning: unused variable 'pFront' [-Wunused-variable]
+     int pFront;
+         ^~~~~~
+main.c:81:9: warning: unused variable 'oCorner' [-Wunused-variable]
+     int oCorner;
+         ^~~~~~~
+main.c:80:9: warning: unused variable 'pCorner' [-Wunused-variable]
+     int pCorner;
+         ^~~~~~~
+main.c:79:9: warning: unused variable 'oSide' [-Wunused-variable]
+     int oSide;
+         ^~~~~
+main.c:78:9: warning: unused variable 'pSide' [-Wunused-variable]
+     int pSide;
+         ^~~~~
+main.c:76:11: warning: unused variable 'wheelRatio' [-Wunused-variable]
+     float wheelRatio = 1;
+           ^~~~~~~~~~
+main.c:74:9: warning: unused variable 'minirread' [-Wunused-variable]
+     int minirread = 50;
+         ^~~~~~~~~
+main.c:73:9: warning: unused variable 'maxirread' [-Wunused-variable]
+     int maxirread = 300;
+         ^~~~~~~~~
+main.c:71:9: warning: unused variable 'offFront' [-Wunused-variable]
+     int offFront;
+         ^~~~~~~~
+main.c:70:9: warning: unused variable 'prefFront' [-Wunused-variable]
+     int prefFront;
+         ^~~~~~~~~
+main.c:69:9: warning: unused variable 'offCorner' [-Wunused-variable]
+     int offCorner;
+         ^~~~~~~~~
+main.c:68:9: warning: unused variable 'prefCorner' [-Wunused-variable]
+     int prefCorner;
+         ^~~~~~~~~~
+main.c:67:9: warning: unused variable 'offSide' [-Wunused-variable]
+     int offSide;
+         ^~~~~~~
+main.c:66:9: warning: unused variable 'prefSide' [-Wunused-variable]
+     int prefSide; // for which sensor is which once a wall follow side is decided - will be set during loop
+         ^~~~~~~~
+main.c:57:9: warning: variable 'SensorValue' set but not used [-Wunused-but-set-variable]
+     int SensorValue[8];
+         ^~~~~~~~~~~
+main.c:48:17: warning: unused variable 'allRGBs' [-Wunused-variable]
+  rgb_led_name_t allRGBs[] = {LED2, LED4, LED6, LED8};
+                 ^~~~~~~
+main.c: At top level:
+main.c:192:1: error: expected identifier or '(' before '}' token
+ }   // int min void end
+ ^
+make: *** [../e-puck2_main-processor/ChibiOS//os/common/ports/ARMCMx/compilers/GCC/rules.mk:217: build/obj/main.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.

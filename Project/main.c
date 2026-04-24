@@ -24,54 +24,7 @@ CONDVAR_DECL(bus_condvar);
 
 
 // Space to declare wall following function
-void follow_wall(){
-    
-    pSide = get_calibrated_prox(prefSide); // these need mapping to a certain sensor based on which side is currently being followed
-    oSide = get_calibrated_prox(offSide); 
-    pCorner = get_calibrated_prox(prefCorner);
-    oCorner = get_calibrated_prox(offCorner);
-    pFront = get_calibrated_prox(prefFront);
-    oFront = get_calibrated_prox(offFront);
-    if (pSide<minirread){
-				//turn towards wall
-				wheelRatio = 0.9;
-			} else if ((pSide>maxirread && oSide<maxirread) || (pCorner>maxirread && oCorner<maxirread)){
-				//turn away from preffered wall
-				wheelRatio = 1.1;
-			} else if ((oSide>maxirread && pSide<maxirread) || (oCorner>maxirread && pCorner<maxirread)){
-				// turn away from offside wall
-				wheelRatio = 0.9;
-			} else if ((pSide>maxirread && oSide>maxirread) || (pCorner>maxirread && oCorner>maxirread)){
-				// if robot is too close to both walls, turn around 180 ish degrees
-				left_motor_set_speed(-500 * followSide);
-				right_motor_set_speed(500 * followSide); 
-				chThdSleepMilliseconds(1000); // 1 second is abritary amount of time
-			} else if (pFront>maxirread || (oFront>maxirread)){
-                // if wall is infront of robot, turn away from desired side
-				left_motor_set_speed(-500 * followSide);
-				right_motor_set_speed(500 * followSide); 
-				chThdSleepMilliseconds(500); // 1 second is abritary amount of time
-            }
 
-			// sets wheel speeds based case seen before
-			if (followSide ==-1){
-				if (wheelRatio<1){
-					left_motor_set_speed(1000 * wheelRatio);
-					right_motor_set_speed(1000); 
-				}else{
-					left_motor_set_speed(1000);
-					right_motor_set_speed(1000 / wheelRatio); 
-				}	
-			} else if (followside ==1){
-				if (wheelRatio<1){
-					left_motor_set_speed(1000);
-					right_motor_set_speed(1000 * wheelRatio); 
-				} else {
-					left_motor_set_speed(1000 / wheelRatio);
-					right_motor_set_speed(1000); 
-				}
-			}
-        }
 		
 
 
@@ -105,7 +58,7 @@ int main(void){
     int currentVal = 0;
     int strongestSensor =-1; // put it as -1 to avoid confusing code - will be from 0 to 7 later
     int maxVal = 0;
-    int maxValThreshold = 500; // for collision detection
+    int maxValThreshold = 100; // for collision detection
 
     int followSide =0; // will be -1 or +1 later
     
@@ -117,8 +70,8 @@ int main(void){
     int prefFront;
     int offFront;
 
-    int maxirread = 1000;
-    int minirread = 300;
+    int maxirread = 300;
+    int minirread = 50;
 
     float wheelRatio = 1;
 
@@ -130,12 +83,12 @@ int main(void){
     int oFront;
 
     //main
-    bool wallsexplored = 0; // flicks to 1 (true) after doing a lap around the walls
+    bool wallsexplored = 1; // flicks to 1 (true) after doing a lap around the walls
     int followCounter =0; //counts steps taken during wall following
     int followDuration = 1200; // steps before wall follow mode ends
 
-    enum RobotState { NOWALL, FOUNDWALL, EXPLORING };
-	enum RobotState currentState = NOWALL;
+    enum RobotState {  FOUNDWALL, EXPLORING };
+	enum RobotState currentState = EXPLORING;
 
     // Main Loop!
     while(1){
@@ -153,75 +106,74 @@ int main(void){
                     maxVal = currentVal;
                     strongestSensor = i;
                 }
-            }
+
                         
         
 
         //Different behaviour based on which state we decided
 
-        if(currentState == NOWALL){
-             if(maxVal >= maxValThreshold){ 
-            switch (strongestSensor) {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                    followSide = 1; //right
-                    currentState = FOUNDWALL;
-                    break;
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                    followSide = -1; //left
-                    currentState = FOUNDWALL;
-                    break;
-            }
 
             				// sets which sensors are preffered side and offside
-		if (followSide == 1){
-			prefFront = 0;
-			prefCorner = 1;
-			prefSide = 2;
-			prefBack = 3;
-			offFront = 7;
-			offCorner = 6;
-			offSide = 5;
-			offBack = 4;
-		} else {
-			prefFront = 7;
-			prefCorner = 6;
-			prefSide = 5;
-			prefBack = 4;
-			offFront = 0;
-			offCorner = 1;
-			offSide = 2;
-			offBack = 3;
-             }
-        }
+
 
 
             else{
                 left_motor_set_speed(1000);
                 right_motor_set_speed(1000);
             }
+            }
         }
 
+        if(currentState == EXPLORING){
+                    // we already know what the sensor values are so no need to get_prox again
+
+                	set_rgb_led(LED2,1,0,0);
+
+                    if (maxVal > maxValThreshold){
+                    	currentState = FOUNDWALL;
+                        switch (strongestSensor) {
+                        case 0:
+                        case 1:
+                        case 2:
+                            followSide = 1; //right
+
+                            break;
+
+                        case 3:
+                        case 4:
+                            followside = 0; // ignore these two
+                            currentState = EXPLORING;
+                            left_motor_set_speed(1000);
+                            right_motor_set_speed(1000);
+
+                            break;
+                        case 5:
+                        case 6:
+                        case 7:
+                            followSide = -1; //left
+
+                            break;
+                        }
+
+                    }else{
+                        left_motor_set_speed(1000);
+                        right_motor_set_speed(1000);
+
+                        }
+                    } // exploring end
+
+
+
         if (currentState == FOUNDWALL){
-            while (wallsexplored == 0){
-                //DO THE WALL FOLLOWING CODE
-                follow_wall(); // is this going to work haha
-                followCounter++; // increases followCounter
+        	set_rgb_led(LED2,0,1,0);
+        	set_rgb_led(LED4,0,1,0);
+        	set_rgb_led(LED6,0,0,1);
 
-                if(followCounter >= followDuration){
-                wallsexplored = 1; // ensures we do not re-enter this state - needs a thing that only does it after a certain amount of time
-                }
-            }
-            else{
+            {
 
-                left_motor_set_speed(-500*followSide);
-                right_motor_set_speed(500*followSide);
-                delay_ms(500); // rotate for a certain amount of time
+                left_motor_set_speed(-750*followSide);
+                right_motor_set_speed(750*followSide);
+                delay_ms(1000); // rotate for a certain amount of time
                 left_motor_set_speed(0);
                 right_motor_set_speed(0);
                 currentState = EXPLORING; 
@@ -233,41 +185,9 @@ int main(void){
             
         
         
-        if(currentState == EXPLORING){
-            // we already know what the sensor values are so no need to get_prox again
-                        
-            if (maxVal > maxValThreshold){
-                switch (strongestSensor) {
-                case 0:
-                case 1:
-                case 2:
-                    followSide = 1; //right
-                    currentState = FOUNDWALL;
-                    break;
-                    
-                case 3:
-                case 4:
-                    followside = 0; // ignore these two
-                    currentState = EXPLORING;
-                    left_motor_set_speed(1000);
-                    right_motor_set_speed(1000);
-                    break;
-                case 5:
-                case 6:
-                case 7:
-                    followSide = -1; //left
-                    currentState = FOUNDWALL;
-                    break;
-                }
 
-            }else{
-                left_motor_set_speed(1000);
-                right_motor_set_speed(1000);
 
-                }
-            } // exploring end
-
-            delay_ms(50);
+            delay_ms(100);
  }   //closing bracket for while loop     
 }   // int min void end
 
